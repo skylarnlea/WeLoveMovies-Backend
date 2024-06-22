@@ -16,6 +16,9 @@ app.use(express.json());
 app.use("/reviews", reviewsRouter);
 app.use("/movies", moviesRouter);
 app.use("/theaters", theatersRouter);
+app.get("/health", (req, res) => {
+  res.json({ status: "ok" });
+});
 
 app.use(notFound);
 app.use(errorHandler);
