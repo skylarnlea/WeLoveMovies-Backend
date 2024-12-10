@@ -6,7 +6,7 @@ You've been hired on as a backend developer for a new startup called WeLoveMovie
 
 [DEPLOYED BACKEND](https://welovemovies-backend-vqz4.onrender.com)
 
-[LINK TO FRONTEND]()
+[LINK TO FRONTEND](https://github.com/skylarnlea/WeLoveMovies_Frontend)
 
 #### URL Routes
 - /movies
