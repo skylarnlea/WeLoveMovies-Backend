@@ -1,193 +1,72 @@
-# WeLoveMovies Backend & API
-The backend and API of WeLoveMovies facilitates storage and delivery of WeLoveMovies' movies, theaters, and reviews data. 
+# WeLoveMovies Capstone Project
 
-Completion of this Thinkful assignment required:
-- Installation and use of common middleware packages
-- Use of routes to receive requests
-- Access to relevant information through route and query parameters
-- Creation of error handlers
-- An API that follows RESTful design principles
-- Creation and customization of a knexfile.js
-- Use of Knex to connect to my PostgreSQL database
-- Database queries to complete CRUD routes in an Express server
-- Return of joined and nested data with Knex
-- Routes that respond with the appropriate status code and include a data key in the response
-- Creation of database migrations using Knex's migration tool
-- Deployment of my backend server to a cloud service (Heroku)
-- Use of the CORS package so that requests from the frontend can correctly reach the backend 
+You've been hired on as a backend developer for a new startup called WeLoveMovies! As another developer works on the design and frontend experience, you have been tasked with setting up a database and building out specific routes so that users can gain access to data about movies, theaters, and reviews.
 
-## Links
-- [App Demo](https://we-love-movies-app-front-end.vercel.app/)
-- [App Documentation](https://github.com/angelalouh/project-welovemovies-app)
+[DEPLOYED WEBSITE](https://welovemovies-frontend-cemi.onrender.com) (Note: You may need to click backend link first)
 
-## Screenshot
-### Home Page:
-![home](/screenshots/home.jpg)
+[DEPLOYED BACKEND](https://welovemovies-backend-vqz4.onrender.com)
 
-## Technology
-Built with:
-- Node.js
-  - Express server framework
-  - CORS package
-- PostgreSQL database
-  - Knex.js for query building
+[LINK TO FRONTEND]()
 
-## API Documentation
-All requests return JSON response. All post requests require application/json body, and return JSON response.
+#### URL Routes
+- /movies
+- /movies/:moviesId
+- /movies/:movieId/theaters
+- /movies/:movieId/reviews
+- /theaters
 
-### Endpoints for movies:
-**Get Movies:** GET to `/movies`
-- Requests all movies in the database.
-- In the event that `is_showing=true` is provided, the route will return only those movies that are currently showing in theaters.
-- Successful GET requests will return an array of JSON objects representing the saved movies. Each movie object contains the following fields:
-  - `id`: integer
-  - `title`: string
-  - `runtime_in_minutes`: integer
-  - `rating`: string
-  - `description`: text
-  - `image_url`: string
+![movies](https://res.cloudinary.com/strive/image/upload/w_1000,h_1000,c_limit/06596df6b4c59b453c69d84d2bc854b3-home.png)
 
-**Get Movie by ID:** GET to `/movies/:movieId`
-- Requests a specific movie by ID.
-- Successful GET request will return a JSON object with the same fields as above.
-- Note: If the given ID does not match an existing movie, a response like the following should be returned:
-```
-{
-  "error": "Movie cannot be found."
-}
-```
+This project is designed to test your ability to both build complex servers and access data through a database. To succeed at this project, you'll need to demonstrate you can do the following:
 
-**Get Theaters Showing Movie:** GET to `/movies/:movieId/theaters`
-- Requests all the theaters the movie is playing at.
-- Successful GET request will return an array of JSON objects representing the theaters. Each theater object contains the following fields:
-  - `theater_id`: integer
-  - `name`: string
-  - `address_line_1`: string
-  - `address_line_2`: string
-  - `city`: string
-  - `state`: string
-  - `zip`: string
-  - `created_at`: date
-  - `updated_at`: date
-  - `is_showing`: boolean
-  - `movie_id`: integer
+- Install and use common middleware packages.
+- Receive requests through routes.
+- Run tests from the command line.
+- Access relevant information through route and query parameters.
+- Create an error handler for the case where a route does not exist.
+- Build an API following RESTful design principles.
+- Create and customize a knexfile.js file.
+- Create a connection to your database with Knex.
+- Write database queries to complete CRUD routes in an Express server.
+- Return joined and nested data with Knex.
+- Write database migrations using Knex's migration tools.
+- Deploy your backend server to a cloud service. It's not necessary to deploy the frontend.
+- You will not need to make any edits to HTML or CSS for this project.
 
-**Get Reviews for a Movie:** GET to `/movies/:movieId/reviews`
-- Requests all of the reviews for a movie, and each review object contains a `"critic"` key with the critic's details as its value. 
-- Successful GET request will return an array of JSON objects representing the reviews. The response from the server should look like the following:
-```
-{
-  "data": [
-    {
-      "review_id": 1,
-      "content": "Lorem markdownum ...",
-      "score": 3,
-      "created_at": "2021-02-23T20:48:13.315Z",
-      "updated_at": "2021-02-23T20:48:13.315Z",
-      "critic_id": 1,
-      "movie_id": 1,
-      "critic": {
-        "critic_id": 1,
-        "preferred_name": "Chana",
-        "surname": "Gibson",
-        "organization_name": "Film Frenzy",
-        "created_at": "2021-02-23T20:48:13.308Z",
-        "updated_at": "2021-02-23T20:48:13.308Z"
-      }
-    }
-    // ...
-  ]
-}
-```
+Note: When downloading the assessment files to your local machine, make sure you're running Node v18 before you run npm install.
 
-### Endpoints for theaters:
-**Get Theaters:** GET to `/theaters`
-- Requests all theaters in the database, and each theater object contains a `"movies"` key with the movies playing at that theater as its value.
-- The response from the server should look like the following:
-```
-{
-  "data": [
-    {
-      "theater_id": 1,
-      "name": "Regal City Center",
-      "address_line_1": "801 C St.",
-      "address_line_2": "",
-      "city": "Vancouver",
-      "state": "WA",
-      "zip": "98660",
-      "created_at": "2021-02-23T20:48:13.335Z",
-      "updated_at": "2021-02-23T20:48:13.335Z",
-      "movies": [
-        {
-          "movie_id": 1,
-          "title": "Spirited Away",
-          "runtime_in_minutes": 125,
-          "rating": "PG",
-          "description": "Chihiro...",
-          "image_url": "https://imdb-api.com...",
-          "created_at": "2021-02-23T20:48:13.342Z",
-          "updated_at": "2021-02-23T20:48:13.342Z",
-          "is_showing": false,
-          "theater_id": 1
-        }
-        // ...
-      ]
-    }
-    // ...
-  ]
-}
-```
+Check which version you are running: node -v
+If needed, change the version to v18: nvm use v18
+For additional help, review the "Learn your tools: Visual Studio Code" lesson.
 
-### Endpoints for reviews:
-**Update Review:** PUT to `/reviews/:reviewId`
-- PUT request will be sent with a single JSON object like so:
-```
-{
-  "score": 3,
-  "content": "New content..."
-}
-```
-- The response from the server should include the entire review record with the newly patched content, and the critic information set to the `critic` property.
-```
-{
-  "data": {
-    "review_id": 1,
-    "content": "New content...",
-    "score": 3,
-    "created_at": "2021-02-23T20:48:13.315Z",
-    "updated_at": "2021-02-23T20:48:13.315Z",
-    "critic_id": 1,
-    "movie_id": 1,
-    "critic": {
-      "critic_id": 1,
-      "preferred_name": "Chana",
-      "surname": "Gibson",
-      "organization_name": "Film Frenzy",
-      "created_at": "2021-02-23T20:48:13.308Z",
-      "updated_at": "2021-02-23T20:48:13.308Z"
-    }
-  }
-}
-```
-- Note: If the given ID does not match an existing review, a response, like the following, should be returned with a response status code of `404`:
-```
-{
-  "error": "Review cannot be found."
-}
-```
+Project setup
+Follow the instructions below to get this project up and running on your own machine:
 
-**Delete Review by ID:** DELETE to `/reviews/:reviewId`
-- DELETE request will be sent without a request body.
-- Note: If the given ID does not match an existing review, a response, like the following, should be returned with a response status code of `404`:
-```
-{
-  "error": "Review cannot be found."
-}
-```
+### Download the Qualified assessment files to your computer.
 
-## Installation
-1. Fork and clone this repository.
-2. Run `cp ./.env.sample ./.env`.
-3. Update the `.env` file with the connection URL's to your database instance.
-4. Run `npm install` to install project dependencies.
-5. Run `npm run start:dev` to start your server in development mode.
+Run npm install to install the project.
+Use Postman to test your application and visit this repository to connect your backend work to a frontend application.
+Run npm test to run the tests.
+Note: Note that the tests make use of an in-memory SQLite database. When updating a record in an in-memory SQLite database, the server does not automatically respond with an array of updated records like PostgreSQL does. As a result, when updating a record, you will need to query the database again to return updated record.
+
+### Instructions
+You are tasked with both setting up the database and building a number of routes that will be used by the frontend application. For this project, you will start by making the necessary changes to the data tier and then proceed to make changes to the application tier following an inside-out development workflow. Each table is detailed below, as is each route.
+
+### Database tables
+You will create five tables for this project. View the docs/tables/ folder in this project to get more detailed information on each table.
+
+You will need to create migrations for each of these tables and run those migrations.
+
+Seed data is included in this project in the ./src/db/seeds folder. The seeds will run correctly if and only if the tables are setup as described in the previous documents.
+
+#### Routes
+You will create five routes for this project. View the docs/routes/ folder in this project to get more detailed information on each table. Note that some routes return data dependent on query parameters.
+
+#### General tasks
+You will also need to make sure the following tasks are complete.
+
+- Your app.js file and server.js file are correctly configured, with your app.js file exporting the application created from Express.
+- You make use of the cors package so that requests from the frontend can correctly reach the backend.
+- If a request is made to a route that does not exist, the server returns a 404 error.
+- If a request is made to a route that exists, but the HTTP method is wrong, a 405 error is returned.
+- All of your routes should respond with the appropriate status code and should use a data key in the response.
