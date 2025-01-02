@@ -1,10 +1,3 @@
-const uniqueMovies = movieData.filter(
-  (movie, index, self) =>
-    index === self.findIndex((m) => m.movie_id === movie.movie_id)
-);
-await knex('movies').insert(uniqueMovies);
-
-
 exports.seed = function (knex) {
   return knex("movies").insert([
     {
@@ -151,7 +144,5 @@ exports.seed = function (knex) {
       image_url:
         "https://m.media-amazon.com/images/M/MV5BN2EwM2I5OWMtMGQyMi00Zjg1LWJkNTctZTdjYTA4OGUwZjMyXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6791_AL_.jpg",
     },
-  ])
-  .onConflict('movie_id')
-  .ignore();
+  ]);
 };
